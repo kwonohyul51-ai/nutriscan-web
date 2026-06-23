@@ -191,6 +191,12 @@
             gap: 30px;
         }
 
+        .feature-grid {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
         .feature-card {
             background: var(--light-color);
             padding: 40px 30px;
@@ -302,17 +308,17 @@
                 </div>
             `;
 
-            // 2. Siapkan data foto untuk dikirim ke Google Colab
+            // 2. Siapkan data foto untuk dikirim
             const formData = new FormData();
             formData.append('foto', file);
 
             try {
-                // 3. Kirim foto ke link Ngrok Google Colab kamu (SUDAH URUT DAN BENAR)
-                const response = await fetch('https://retail-extruding-obstinate.ngrok-free.dev/scan-makanan', {
+                // 3. Kirim foto ke link Hugging Face BARU (Sudah otomatis diganti ke server permanen gratis)
+                const response = await fetch('https://kwonohyul-nutriscan-api.hf.space/scan-makanan', {
                     method: 'POST',
                     body: formData
                 });
-                                
+                                        
                 const hasil = await response.json();
                 
                 // 4. Hapus tulisan loading
@@ -328,7 +334,7 @@
             } catch (error) {
                 const loadingText = document.querySelector('.screen div');
                 if (loadingText) loadingText.remove();
-                alert("Gagal terhubung ke Server AI. Pastikan Google Colab kamu masih berjalan ya, seng!");
+                alert("Gagal terhubung ke Server AI. Pastikan Hugging Face kamu statusnya 'Running' ya, seng!");
             }
         }
     </script>
